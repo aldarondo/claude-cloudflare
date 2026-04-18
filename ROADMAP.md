@@ -15,4 +15,4 @@ Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldaron
 - [x] `[Code]` Evaluate MCP servers — chose `@itunified.io/mcp-cloudflare`; created `.mcp.json` config (2026-04-18)
 
 ## 🚫 Blocked
-<!-- log blockers here -->
+- `[Human]` aldarondo.us zone not yet added to Cloudflare — required before token can be scoped to the zone and tunnel/DNS tools can be tested. Add site in Cloudflare dashboard and point registrar NS records.
