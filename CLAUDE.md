@@ -1,14 +1,23 @@
 # claude-cloudflare
 
-## Project Purpose
-Evaluate and configure Cloudflare MCP servers for Claude Code; build custom skills only for gaps not covered by upstream solutions.
+## What This Project Is
+Connects Claude Code to the Cloudflare account so Charles can manage DNS, tunnels, WAF, Workers, and R2 directly from Claude — starting with the brian-mcp tunnel use case (aldarondo.us).
+
+## Tech Stack
+Not yet determined — evaluating `@cloudflare/mcp-server-cloudflare` (official) vs `@itunified.io/mcp-cloudflare` (community, 75 tools) before committing to a stack.
+
+## Key Decisions
+- No custom code until MCP evaluation is complete — use upstream as-is if it covers the tunnel use case
+- Scope the Cloudflare API token to minimum required permissions for the chosen MCP
+
+## Session Startup Checklist
+1. Check which MCP server is configured in Claude Code settings
+2. Verify Cloudflare API token is set in the MCP config
+3. Run a quick DNS lookup or tunnel status check to confirm connectivity
 
 ## Key Commands
 ```bash
-# Install community MCP (75 tools: DNS, Tunnels, WAF, Workers, R2, Zero Trust)
-npm install -g @itunified.io/mcp-cloudflare
-
-# Run tests
+# Run tests (once custom code exists)
 npm test
 ```
 

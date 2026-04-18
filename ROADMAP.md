@@ -1,15 +1,16 @@
 # claude-cloudflare Roadmap
 > Tag key: `[Code]` = Claude Code · `[Cowork]` = Claude Cowork · `[Human]` = Charles must act
 
+## 🎯 Current Milestone
+Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldarondo.us DNS + tunnel).
+
 ## 🔄 In Progress
-- [ ] `[Code]` Evaluate `@cloudflare/mcp-server-cloudflare` vs `@itunified.io/mcp-cloudflare` — capabilities, auth model, ease of connection
+- [ ] `[Code]` Evaluate `@cloudflare/mcp-server-cloudflare` (official) vs `@itunified.io/mcp-cloudflare` (community, 75 tools) — capabilities, auth model, ease of connection; pick one
 
 ## 🔲 Backlog
-- [ ] `[Human]` Obtain Cloudflare API token scoped for MCP server auth
-- [ ] `[Code]` Connect chosen MCP to Claude Code and validate against brian-mcp tunnel use case (aldarondo.us)
-- [ ] `[Code]` Document gaps vs current needs; scope any custom skill work
-- [ ] `[Code]` Write unit tests for any custom skill logic
-- [ ] `[Code]` Write integration tests for end-to-end Cloudflare flows
+- [ ] `[Human]` Create Cloudflare API token with scopes required by chosen MCP
+- [ ] `[Code]` Connect chosen MCP to Claude Code and verify tunnel/DNS tools work against aldarondo.us
+- [ ] `[Code]` Document which tools cover the brian-mcp use case; note any gaps; scope custom skill work if needed
 
 ## ✅ Completed
 <!-- dated entries go here -->
