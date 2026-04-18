@@ -15,3 +15,4 @@ Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldaron
 
 ## 🚫 Blocked
 - [x] `[Human]` Token created, env vars set, NS delegated — aldarondo.family zone active (2026-04-18)
+- [x] `[Code]` Chose @itunified.io/mcp-cloudflare, created .mcp.json, updated CLAUDE.md (2026-04-18)
