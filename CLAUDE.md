@@ -1,7 +1,7 @@
 # claude-cloudflare
 
 ## What This Project Is
-Connects Claude Code to the Cloudflare account so Charles can manage DNS, tunnels, WAF, Workers, and R2 directly from Claude — starting with the brian-mcp tunnel use case (aldarondo.us).
+Connects Claude Code to the Cloudflare account so Charles can manage DNS, tunnels, WAF, Workers, and R2 directly from Claude — starting with the brian-mcp tunnel use case (aldarondo.family).
 
 ## Tech Stack
 - MCP server: `@itunified.io/mcp-cloudflare` (~84 tools) — covers DNS CRUD + full tunnel lifecycle
@@ -9,7 +9,7 @@ Connects Claude Code to the Cloudflare account so Charles can manage DNS, tunnel
 
 ## Key Decisions
 - Chose community MCP over official — official package has no DNS record management and no tunnel tools
-- API token needs: Zone/DNS Edit (aldarondo.us) + Account/Cloudflare Tunnel Edit scopes
+- API token needs: Zone/DNS Edit (aldarondo.family) + Account/Cloudflare Tunnel Edit scopes
 
 ## Session Startup Checklist
 1. Check which MCP server is configured in Claude Code settings

@@ -5,8 +5,8 @@
 Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldarondo.us DNS + tunnel).
 
 ## 🔄 In Progress
-- [ ] `[Human]` Create Cloudflare API token — Zone/DNS Edit on aldarondo.us + Account/Cloudflare Tunnel Edit; set `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` env vars in shell profile
-- [ ] `[Code]` Connect MCP to Claude Code and verify tunnel/DNS tools work against aldarondo.us
+- [ ] `[Human]` Point aldarondo.family NS to Cloudflare (`alice.ns.cloudflare.com`, `cameron.ns.cloudflare.com`) at Squarespace — zone is currently `pending`
+- [ ] `[Code]` Connect MCP to Claude Code and verify tunnel/DNS tools work against aldarondo.family
 
 ## 🔲 Backlog
 - [ ] `[Code]` Document which tools cover the brian-mcp use case; note any gaps; scope custom skill work if needed
@@ -15,4 +15,4 @@ Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldaron
 - [x] `[Code]` Evaluate MCP servers — chose `@itunified.io/mcp-cloudflare`; created `.mcp.json` config (2026-04-18)
 
 ## 🚫 Blocked
-- `[Human]` aldarondo.us zone not yet added to Cloudflare — required before token can be scoped to the zone and tunnel/DNS tools can be tested. Add site in Cloudflare dashboard and point registrar NS records.
+- `[Human]` Token created, env vars set, .mcp.json configured — waiting on NS delegation at Squarespace before zone goes active.
