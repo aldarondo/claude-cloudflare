@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "cloudflare": {
-      "command": "npx",
-      "args": ["-y", "@itunified.io/mcp-cloudflare"],
+      "command": "node",
+      "args": ["C:\\Users\\YOUR_USERNAME\\AppData\\Roaming\\npm\\node_modules\\@itunified.io\\mcp-cloudflare\\dist\\index.js"],
       "env": {
         "CLOUDFLARE_API_TOKEN": "your-token-here",
         "CLOUDFLARE_ACCOUNT_ID": "your-account-id-here"
