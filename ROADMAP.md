@@ -8,10 +8,10 @@ Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldaron
 <!-- nothing in progress -->
 
 ## 🔲 Backlog
-- [ ] `[Human]` Install `cloudflared` on the host machine (not covered by MCP — Bash operation)
-- [ ] `[Code]` Create brian-mcp tunnel, configure ingress, create CNAME DNS record, retrieve token
+<!-- nothing pending -->
 
 ## ✅ Completed
+- [x] `[Code]` Tunnel "brian" created, ingress configured (brian.aldarondo.family → mcp-memory:8765), CNAME live, tunnel healthy (2026-04-19)
 - [x] `[Code]` Tool coverage documented — MCP covers full tunnel+DNS lifecycle; only gap is cloudflared install (Bash) (2026-04-19)
 - [x] `[Code]` MCP verified live — token active, DNS reads aldarondo.family, tunnel API connected (2026-04-19)
 - [x] `[Human]` Token created, Windows env vars set, NS delegated — aldarondo.family zone active (2026-04-18)
