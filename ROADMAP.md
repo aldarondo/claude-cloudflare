@@ -5,12 +5,14 @@
 Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldarondo.family DNS + tunnel).
 
 ## 🔄 In Progress
-- [ ] `[Code]` Document which tools cover the brian-mcp use case; note any gaps; scope custom skill work if needed
+<!-- nothing in progress -->
 
 ## 🔲 Backlog
-<!-- future work here -->
+- [ ] `[Human]` Install `cloudflared` on the host machine (not covered by MCP — Bash operation)
+- [ ] `[Code]` Create brian-mcp tunnel, configure ingress, create CNAME DNS record, retrieve token
 
 ## ✅ Completed
+- [x] `[Code]` Tool coverage documented — MCP covers full tunnel+DNS lifecycle; only gap is cloudflared install (Bash) (2026-04-19)
 - [x] `[Code]` MCP verified live — token active, DNS reads aldarondo.family, tunnel API connected (2026-04-19)
 - [x] `[Human]` Token created, Windows env vars set, NS delegated — aldarondo.family zone active (2026-04-18)
 - [x] `[Code]` Chose @itunified.io/mcp-cloudflare, created .mcp.json, updated CLAUDE.md (2026-04-18)
