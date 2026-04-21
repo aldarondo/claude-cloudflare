@@ -74,6 +74,22 @@ claude mcp add cloudflare -s user \
 | `cloudflare_zone_get/list` | Zone info and health |
 | `cloudflare_token_verify` | Confirm API token is valid |
 
+## Scripts
+
+### `scripts/create-access-service-token.mjs`
+
+Creates a Cloudflare Access Service Token and optionally sets the resulting credentials as GitHub Actions secrets.
+
+```bash
+node scripts/create-access-service-token.mjs \
+  --name github-actions-nas-deploy \
+  --gh-repo aldarondo/enphase-juicebox-coordinator \
+  --id-secret CF_ACCESS_CLIENT_ID \
+  --secret-secret CF_ACCESS_CLIENT_SECRET
+```
+
+Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in env. Requires `gh` CLI authenticated for the `--gh-repo` target.
+
 ## Docs
 
 - [cloudflared install guide for Docker](docs/cloudflared-install.md) — instructions for the brian-mcp agent
