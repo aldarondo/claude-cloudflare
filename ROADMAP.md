@@ -20,9 +20,9 @@ Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldaron
 - [x] `[Human]` cloudflared installed on NAS (2026-04-22)
 - [x] `[Code]` `nas-ssh` tunnel created, healthy, `nas-ssh.aldarondo.family` CNAME live (2026-04-20)
 - [x] `[Code]` Access app "NAS SSH" created with Service Token policy for GitHub Actions (2026-04-21)
-- [ ] `[Human]` Decide: expose DSM admin panel externally? If yes, add tunnel ingress rule + DNS record for `dsm.aldarondo.family` and create Access app gated to Aldarondo Family emails
-- [ ] `[Code]` Review NAS SSH Access policy — current "bypass / everyone" (precedence 1) allows unauthenticated attempts; consider replacing with identity or service-token-only if SSH key auth alone isn't sufficient
-- [ ] `[Human+Code]` WAF custom rules — API token lacks Firewall Edit scope; add scope then implement rules to block non-Cloudflare-origin IPs on NAS-exposed subdomains
+- [x] `[Human]` DSM panel — decided not to expose externally (2026-04-22)
+- [x] `[Human]` NAS SSH bypass policy — intentional; SSH key auth is the security layer, bypass is correct (2026-04-22)
+- [x] `[Human]` WAF rules — not applicable; tunnel architecture guarantees origin protection without WAF (2026-04-22)
 
 ## ✅ Completed
 - [x] `[Code]` Added `scripts/create-access-service-token.mjs` — creates Cloudflare Access Service Tokens and pipes credentials to GitHub Actions secrets via `gh secret set` (2026-04-21)
