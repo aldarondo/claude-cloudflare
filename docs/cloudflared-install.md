@@ -60,6 +60,24 @@ You should see `active (running)`. The tunnel will show as healthy in the Cloudf
 
 Report back to Charles once the service is running — he will verify connectivity from the Cloudflare side and confirm the DNS record is live.
 
+## Troubleshooting
+
+**Service shows `failed` or `inactive` in systemctl status**
+Check logs: `sudo journalctl -u cloudflared -n 50`
+Common causes: invalid token (re-run `sudo cloudflared service install NEW_TOKEN`), or `cloudflared` binary not in PATH.
+
+**Tunnel shows "unhealthy" in Cloudflare dashboard**
+The connector is not reaching Cloudflare. Verify the machine has outbound internet on port 7844 (UDP) and 443 (TCP). Try: `curl -I https://cloudflare.com` to confirm basic connectivity.
+
+**`brian.aldarondo.family` times out or returns NXDOMAIN**
+DNS CNAME may not be live yet. Give it 1–2 minutes after the tunnel goes healthy, then: `nslookup brian.aldarondo.family 1.1.1.1`
+
+**Port conflict — local service not reachable**
+If the ingress route points to `localhost:8765` but mcp-memory is on a different port, Charles needs to update the ingress config on the Cloudflare side (via MCP or dashboard). No local config file change is needed.
+
+**Token invalid error in logs**
+The tunnel token is a one-time credential tied to the specific tunnel. If the tunnel was deleted and recreated, get a new token via `cloudflare_tunnel_token` MCP tool and reinstall the service.
+
 ## Notes
 
 - `cloudflared` makes outbound connections only — no inbound ports need to be opened

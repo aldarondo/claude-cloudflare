@@ -17,7 +17,7 @@ Connects Claude Code to Cloudflare so Charles can manage DNS, tunnels, WAF, Work
 | MCP server | `@itunified.io/mcp-cloudflare` (~84 tools) |
 | Invocation | `node` via global npm install |
 | Config | `.mcp.json` (gitignored — see `.mcp.json.example`) |
-| Credentials | Windows User env vars + hardcoded in `.mcp.json` |
+| Credentials | Windows User env vars, referenced in `.mcp.json` (gitignored) |
 
 ## Setup (new machine)
 
@@ -35,14 +35,14 @@ cp .mcp.json.example .mcp.json
 
 Edit `.mcp.json` and fill in:
 - `CLOUDFLARE_API_TOKEN` — token with Zone/DNS Edit (aldarondo.family) + Account/Cloudflare Tunnel Edit
-- `CLOUDFLARE_ACCOUNT_ID` — `353b2df4f32741e0245d4a254bf72c2a`
-- Path to the globally installed package (update username in the `args` path)
+- `CLOUDFLARE_ACCOUNT_ID` — find yours at dash.cloudflare.com (top-right account menu → Account ID)
+- Path to the globally installed package — replace `YOUR_USERNAME` in the `args` path, or run `npm config get prefix` to find the right prefix
 
 ### 3. Set Windows env vars (optional but recommended)
 
 ```powershell
 setx CLOUDFLARE_API_TOKEN "your-token"
-setx CLOUDFLARE_ACCOUNT_ID "353b2df4f32741e0245d4a254bf72c2a"
+setx CLOUDFLARE_ACCOUNT_ID "your-account-id"
 ```
 
 ### 4. Restart Claude Code

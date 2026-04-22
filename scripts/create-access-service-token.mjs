@@ -16,6 +16,7 @@
  */
 
 import { execSync } from "child_process";
+import { fileURLToPath } from "url";
 
 const CLOUDFLARE_API = "https://api.cloudflare.com/client/v4";
 
@@ -33,18 +34,23 @@ If --gh-repo is omitted, credentials are printed to stdout only.
   process.exit(1);
 }
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const args = {};
   for (let i = 0; i < argv.length; i++) {
     if (argv[i].startsWith("--")) {
-      args[argv[i].slice(2)] = argv[i + 1];
+      const key = argv[i].slice(2);
+      const value = argv[i + 1];
+      if (value === undefined || value.startsWith("--")) {
+        throw new Error(`Flag --${key} requires a value`);
+      }
+      args[key] = value;
       i++;
     }
   }
   return args;
 }
 
-async function createServiceToken(accountId, apiToken, name) {
+export async function createServiceToken(accountId, apiToken, name) {
   const res = await fetch(
     `${CLOUDFLARE_API}/accounts/${accountId}/access/service_tokens`,
     {
@@ -70,14 +76,27 @@ async function createServiceToken(accountId, apiToken, name) {
   };
 }
 
-function setGitHubSecret(repo, secretName, secretValue) {
-  execSync(`gh secret set ${secretName} --repo ${repo} --body "${secretValue}"`, {
-    stdio: "inherit",
-  });
+export function setGitHubSecret(repo, secretName, secretValue) {
+  try {
+    execSync(
+      `gh secret set ${secretName} --repo ${repo} --body "${secretValue}"`,
+      { stdio: "inherit" }
+    );
+  } catch (err) {
+    throw new Error(
+      `Failed to set GitHub secret ${secretName} on ${repo}: ${err.message}`
+    );
+  }
 }
 
 async function main() {
-  const args = parseArgs(process.argv.slice(2));
+  let args;
+  try {
+    args = parseArgs(process.argv.slice(2));
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
+    usage();
+  }
 
   const tokenName = args["name"];
   if (!tokenName) {
@@ -119,7 +138,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err.message ?? err);
-  process.exit(1);
-});
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
+    console.error(err.message ?? err);
+    process.exit(1);
+  });
+}

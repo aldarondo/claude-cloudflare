@@ -4,6 +4,13 @@
 ## 🎯 Current Milestone
 Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldarondo.family DNS + tunnel).
 
+**Acceptance criteria (milestone is complete when all are true):**
+- DNS CRUD verified: A/CNAME/TXT records can be created, read, updated, and deleted via MCP
+- Tunnel lifecycle verified: tunnel can be created, token fetched, ingress configured, and deleted via MCP
+- `brian` tunnel is healthy and `brian.aldarondo.family` resolves to the mcp-memory service
+- `create-access-service-token.mjs` script is tested (unit + integration) and documented
+- No secrets in version control; `.mcp.json` is gitignored on all machines
+
 ## 🔄 In Progress
 <!-- nothing in progress -->
 
