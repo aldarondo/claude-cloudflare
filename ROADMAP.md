@@ -4,18 +4,24 @@
 ## 🎯 Current Milestone
 Able to manage Cloudflare from Claude for the brian-mcp tunnel use case (aldarondo.family DNS + tunnel).
 
-**Acceptance criteria (milestone is complete when all are true):**
-- DNS CRUD verified: A/CNAME/TXT records can be created, read, updated, and deleted via MCP
-- Tunnel lifecycle verified: tunnel can be created, token fetched, ingress configured, and deleted via MCP
-- `brian` tunnel is healthy and `brian.aldarondo.family` resolves to the mcp-memory service
-- `create-access-service-token.mjs` script is tested (unit + integration) and documented
-- No secrets in version control; `.mcp.json` is gitignored on all machines
+**Acceptance criteria — all met (2026-04-22):**
+- ✅ DNS CRUD verified: A/CNAME/TXT records can be created, read, updated, and deleted via MCP
+- ✅ Tunnel lifecycle verified: tunnel can be created, token fetched, ingress configured, and deleted via MCP
+- ✅ `brian` tunnel is healthy and `brian.aldarondo.family` resolves to the mcp-memory service
+- ✅ `create-access-service-token.mjs` script is tested (unit + integration) and documented
+- ✅ No secrets in version control; `.mcp.json` is gitignored on all machines
 
 ## 🔄 In Progress
 <!-- nothing in progress -->
 
 ## 🔲 Backlog
-<!-- nothing pending -->
+
+### Synology NAS integration
+- [ ] `[Human]` Install cloudflared on the NAS — follow `docs/cloudflared-install.md`; decide whether to add NAS services as ingress rules on the existing `brian` tunnel or create a dedicated `nas` tunnel
+- [ ] `[Code]` Add DNS records and tunnel ingress rules for NAS-hosted services (DSM, and any others Charles wants exposed)
+- [ ] `[Code]` Create Cloudflare Access policies to gate DSM and any other sensitive NAS admin panels (require Google SSO or a service token)
+- [ ] `[Code]` Create Access Service Token for NAS-side automation (e.g., deployment scripts, cron jobs that call Cloudflare API) using `create-access-service-token.mjs`
+- [ ] `[Code]` Add WAF custom rules to restrict NAS-exposed endpoints — block non-Cloudflare-origin IPs at the zone level
 
 ## ✅ Completed
 - [x] `[Code]` Added `scripts/create-access-service-token.mjs` — creates Cloudflare Access Service Tokens and pipes credentials to GitHub Actions secrets via `gh secret set` (2026-04-21)
